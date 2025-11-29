@@ -10,6 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.unit.IntOffset
@@ -78,9 +79,9 @@ fun TopResourceBar(port: Port) {
 
 @Composable
 fun PortCanvas(port: Port) {
-    val shipImage = androidx.compose.ui.res.imageResource(id = com.pocketport.R.drawable.ic_ship)
-    val factoryImage = androidx.compose.ui.res.imageResource(id = com.pocketport.R.drawable.ic_factory)
-    val craneImage = androidx.compose.ui.res.imageResource(id = com.pocketport.R.drawable.ic_crane)
+    val shipImage = ImageBitmap.imageResource(id = com.pocketport.R.drawable.ic_ship)
+    val factoryImage = ImageBitmap.imageResource(id = com.pocketport.R.drawable.ic_factory)
+    val craneImage = ImageBitmap.imageResource(id = com.pocketport.R.drawable.ic_crane)
     
     // Particle System State
     val particleSystem = remember { ParticleSystem() }
