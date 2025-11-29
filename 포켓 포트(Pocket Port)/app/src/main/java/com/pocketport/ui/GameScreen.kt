@@ -11,6 +11,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.drawscope.translate
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.unit.IntOffset
@@ -79,9 +80,9 @@ fun TopResourceBar(port: Port) {
 
 @Composable
 fun PortCanvas(port: Port) {
-    val shipImage = ImageBitmap.imageResource(id = com.pocketport.R.drawable.ic_ship)
-    val factoryImage = ImageBitmap.imageResource(id = com.pocketport.R.drawable.ic_factory)
-    val craneImage = ImageBitmap.imageResource(id = com.pocketport.R.drawable.ic_crane)
+    val shipPainter = androidx.compose.ui.res.painterResource(id = com.pocketport.R.drawable.ic_ship)
+    val factoryPainter = androidx.compose.ui.res.painterResource(id = com.pocketport.R.drawable.ic_factory)
+    val cranePainter = androidx.compose.ui.res.painterResource(id = com.pocketport.R.drawable.ic_crane)
     
     // Particle System State
     val particleSystem = remember { ParticleSystem() }
@@ -109,11 +110,11 @@ fun PortCanvas(port: Port) {
             val x = 100f + (index * 200f)
             val y = canvasHeight * 0.65f // Adjusted for sprite
             
-            drawImage(
-                image = factoryImage,
-                dstOffset = IntOffset(x.toInt(), y.toInt()),
-                dstSize = IntSize(120, 120) // Scale up slightly
-            )
+            with(factoryPainter) {
+                translate(left = x, top = y) {
+                    draw(size = Size(120f, 120f))
+                }
+            }
             
             // Emit Smoke
             if (Math.random() < 0.1) {
@@ -130,11 +131,11 @@ fun PortCanvas(port: Port) {
             val x = if (ship.state == VehicleState.MOVING) canvasWidth * 0.8f else 100f + (index * 300f)
             val y = canvasHeight * 0.45f
             
-            drawImage(
-                image = shipImage,
-                dstOffset = IntOffset(x.toInt(), y.toInt()),
-                dstSize = IntSize(200, 80)
-            )
+            with(shipPainter) {
+                translate(left = x, top = y) {
+                    draw(size = Size(200f, 80f))
+                }
+            }
             
             // Draw Container Stack on Ship
             if (ship.currentLoad.isNotEmpty()) {
@@ -160,11 +161,11 @@ fun PortCanvas(port: Port) {
             val x = 180f + (index * 200f)
             val y = canvasHeight * 0.55f
             
-            drawImage(
-                image = craneImage,
-                dstOffset = IntOffset(x.toInt(), y.toInt()),
-                dstSize = IntSize(100, 150)
-            )
+            with(cranePainter) {
+                translate(left = x, top = y) {
+                    draw(size = Size(100f, 150f))
+                }
+            }
             
             if (crane.state == VehicleState.LOADING || crane.state == VehicleState.UNLOADING) {
                  drawCircle(
