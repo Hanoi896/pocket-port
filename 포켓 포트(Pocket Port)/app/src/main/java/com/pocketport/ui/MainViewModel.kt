@@ -59,3 +59,4 @@ class MainViewModel : ViewModel() {
         gameManager.stopGameLoop()
     }
 }
+
