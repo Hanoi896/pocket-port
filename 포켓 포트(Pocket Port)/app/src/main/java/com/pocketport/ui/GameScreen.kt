@@ -251,4 +251,3 @@ fun TutorialOverlay(step: Int, onNext: () -> Unit) {
         }
     }
 }
-
