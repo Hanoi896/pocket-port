@@ -1,4 +1,3 @@
-```kotlin
 package com.pocketport.ui
 
 import androidx.compose.foundation.Canvas
@@ -252,4 +251,4 @@ fun TutorialOverlay(step: Int, onNext: () -> Unit) {
         }
     }
 }
-```
+
