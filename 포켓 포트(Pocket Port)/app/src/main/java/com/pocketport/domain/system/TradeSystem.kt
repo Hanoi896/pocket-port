@@ -13,13 +13,14 @@ class TradeSystem {
     }
 
     private fun initializeRoutes() {
-        routes.add(TradeRoute("route_local", "Local Market", 100, 1.0f, 0.0f, mapOf(ContainerType.GENERAL to 1.0f)))
-        routes.add(TradeRoute("route_city", "City Center", 500, 1.5f, 0.1f, mapOf(ContainerType.ADVANCED to 1.2f)))
-        routes.add(TradeRoute("route_neighbor", "Neighbor Port", 1200, 2.0f, 0.2f, mapOf(ContainerType.FROZEN to 1.5f)))
-        routes.add(TradeRoute("route_capital", "Capital City", 3000, 3.5f, 0.3f, mapOf(ContainerType.DANGEROUS to 2.0f)))
-        routes.add(TradeRoute("route_overseas", "Overseas Empire", 8000, 5.0f, 0.5f, mapOf(ContainerType.SPECIAL to 3.0f)))
-        routes.add(TradeRoute("route_arctic", "Arctic Station", 15000, 8.0f, 0.7f, mapOf(ContainerType.FROZEN to 4.0f)))
-        routes.add(TradeRoute("route_moon", "Lunar Base", 50000, 20.0f, 0.9f, mapOf(ContainerType.SPECIAL to 10.0f)))
+        // id, name, distance, reward, risk, requiredLevel, map
+        routes.add(TradeRoute("route_local", "Local Market", 100, 1.0f, 0.0f, 1, true, mapOf(ContainerType.GENERAL to 1.0f)))
+        routes.add(TradeRoute("route_city", "City Center", 500, 1.5f, 0.1f, 2, false, mapOf(ContainerType.ADVANCED to 1.2f)))
+        routes.add(TradeRoute("route_neighbor", "Neighbor Port", 1200, 2.0f, 0.2f, 5, false, mapOf(ContainerType.FROZEN to 1.5f)))
+        routes.add(TradeRoute("route_capital", "Capital City", 3000, 3.5f, 0.3f, 10, false, mapOf(ContainerType.DANGEROUS to 2.0f)))
+        routes.add(TradeRoute("route_overseas", "Overseas Empire", 8000, 5.0f, 0.5f, 20, false, mapOf(ContainerType.SPECIAL to 3.0f)))
+        routes.add(TradeRoute("route_arctic", "Arctic Station", 15000, 8.0f, 0.7f, 30, false, mapOf(ContainerType.FROZEN to 4.0f)))
+        routes.add(TradeRoute("route_moon", "Lunar Base", 50000, 20.0f, 0.9f, 50, false, mapOf(ContainerType.SPECIAL to 10.0f)))
     }
 
     fun getAvailableRoutes(): List<TradeRoute> {
